@@ -1,3 +1,5 @@
+require('dotenv').config();
+const HDWalletProvider = require('@truffle/hdwallet-provider');
 /**
  * Use this file to configure your truffle project. It's seeded with some
  * common settings for different networks and features like migrations,
@@ -72,6 +74,14 @@ module.exports = {
     // network_id: 2111,   // This network is yours, in the cloud.
     // production: true    // Treats this network as if it was a public net. (default: false)
     // }
+    kovan: {
+      provider: () => new HDWalletProvider(
+        process.env.PRIVATE_KEY,
+        process.env.INFURA_URL_KOVAN
+      ),
+      network_id: 42,
+    },
+
   },
 
   // Set default mocha options here, use special reporters etc.
